@@ -8,7 +8,6 @@ import com.appmovil.dogapp.databinding.LoginBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: LoginBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.login)
