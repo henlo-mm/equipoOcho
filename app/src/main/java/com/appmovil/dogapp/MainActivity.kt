@@ -1,11 +1,20 @@
 package com.appmovil.dogapp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.appmovil.dogapp.databinding.LoginBinding
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: LoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)
+        binding = DataBindingUtil.setContentView(this, R.layout.login)
+
+        binding.animationView.setOnClickListener {
+            startActivity(Intent(this, BiometricActivity::class.java))
+        }
     }
 }
