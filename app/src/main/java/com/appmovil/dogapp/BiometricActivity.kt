@@ -1,10 +1,12 @@
 package com.appmovil.dogapp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import java.util.concurrent.Executor
+
 
 class BiometricActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +24,9 @@ class BiometricActivity : AppCompatActivity() {
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)
+                val intent = Intent(this@BiometricActivity, AppointmentManagerActivity::class.java)
+                startActivity(intent)
+                finish()
             }
 
             override fun onAuthenticationFailed() {

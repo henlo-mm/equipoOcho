@@ -10,10 +10,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: LoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = DataBindingUtil.setContentView(this, R.layout.login)
 
         binding.animationView.setOnClickListener {
             startActivity(Intent(this, BiometricActivity::class.java))
         }
+
+        //setContentView(R.layout.activity_nueva_cita)
+
     }
 }
