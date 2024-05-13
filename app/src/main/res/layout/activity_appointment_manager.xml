@@ -5,15 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-
-
     >
 
     <!-- Header con fondo gris oscuro y esquina inferior izquierda curvada -->
     <LinearLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
-        android:layout_height="203dp"
+        android:layout_height="150dp"
         android:layout_marginTop="0dp"
         android:background="@drawable/rounded_bottom_left"
         android:clipToPadding="false"
@@ -21,12 +19,11 @@
         android:paddingTop="16dp"
         android:paddingEnd="24dp"
         android:paddingBottom="16dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-
 
         <TextView
             android:id="@+id/titleTextView"
@@ -63,6 +60,21 @@
             android:layout_marginBottom="0dp"/>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cardContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:layout_constraintBottom_toTopOf="@id/floatingButton1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Aquí se agregarán las CardViews dinámicamente -->
+
+    </LinearLayout>
+
 
     <ImageButton
         android:id="@+id/floatingButton1"
