@@ -1,4 +1,4 @@
-package com.appmovil.dogapp
+package com.appmovil.dogapp.view
 
 import android.os.Bundle
 import android.widget.ImageView
@@ -6,8 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-
-
+import com.appmovil.dogapp.R
 
 
 class MainActivity1 : AppCompatActivity() {
@@ -16,7 +15,11 @@ class MainActivity1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appointment_manager)
 
-        val images = arrayOf(R.drawable.dog_app_logo, R.drawable.dog_app_logo, R.drawable.dog_app_logo)
+        val images = arrayOf(
+            R.drawable.dog_app_logo,
+            R.drawable.dog_app_logo,
+            R.drawable.dog_app_logo
+        )
         val breeds = arrayOf("Labrador", "Golden Retriever", "Bulldog")
         val symptoms = arrayOf("Fiebre", "Dolor de estómago", "Problemas respiratorios")
         val cardContainer = findViewById<LinearLayout>(R.id.cardContainer)

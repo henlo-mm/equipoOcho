@@ -1,11 +1,15 @@
-package com.appmovil.dogapp
+package com.appmovil.dogapp.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.appmovil.dogapp.R
 
-class AppointmentManagerActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_appointment_manager)
+
+        setContentView(R.layout.activity_main)
+
     }
+
 }

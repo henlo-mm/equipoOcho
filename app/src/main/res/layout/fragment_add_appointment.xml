@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.appmovil.dogapp.viewmodel.AppointmentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        tools:context=".view.fragment.AddAppointmentFragment">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/darkGrey"
+            android:contentInsetStart="0dp"
+            android:contentInsetLeft="10dp"
+            android:contentInsetEnd="0dp"
+            android:contentInsetRight="0dp"
+            android:outlineProvider="none"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="?attr/actionBarSize"
+                android:layout_marginLeft="?attr/actionBarSize"
+                android:layout_marginEnd="?attr/actionBarSize"
+                android:layout_marginRight="?attr/actionBarSize"
+                android:text="Nueva Cita"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="40dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de la mascota"
+                android:textColor="@android:color/black"
+                android:inputType="text"
+                android:maxLength="15"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/razaInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="120dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/razaEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Raza"
+                android:textColor="@android:color/black"
+                android:inputType="text"
+                android:maxLength="15"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameOwnerInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="200dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameOwnerEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del propietario"
+                android:textColor="@android:color/black"
+                android:inputType="text"
+                android:maxLength="30"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/telephoneInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="280dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/telephoneEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Teléfono"
+                android:textColor="@android:color/black"
+                android:inputType="number"
+                android:maxLength="10"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sintomasSpinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="360dp">
+
+            <Spinner
+                android:id="@+id/sintomas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/opciones"
+                android:textColor="@android:color/black"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/btnGuardarCita"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="500dp">
+
+            <Button
+                android:id="@+id/GuardarCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textColorHighlight="@color/pink"
+                android:drawableStart="@drawable/ic_save"
+                android:drawablePadding="8dp"
+                android:enabled="true"
+                android:onClick="guardarCita"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Guardar Cita"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="500dp"
+                android:background="@color/pink"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
