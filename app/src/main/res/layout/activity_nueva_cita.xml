@@ -1,5 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,17 +10,22 @@
     <!-- Campos de entrada -->
 
     <androidx.appcompat.widget.Toolbar
+
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/darkGrey"
+        android:layout_width="353dp"
+        android:layout_height="106dp"
+        android:background="@drawable/curved_toolbar"
         android:contentInsetStart="0dp"
         android:contentInsetLeft="10dp"
         android:contentInsetEnd="0dp"
         android:contentInsetRight="0dp"
         android:outlineProvider="none"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/title"
@@ -29,12 +33,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="?attr/actionBarSize"
-            android:layout_marginLeft="?attr/actionBarSize"
-            android:layout_marginEnd="?attr/actionBarSize"
-            android:layout_marginRight="?attr/actionBarSize"
             android:text="Nueva Cita"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="28dp"
             android:textStyle="bold" />
 
 
@@ -44,20 +45,20 @@
         android:id="@+id/nameInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre de la mascota"
-            android:textColor="@android:color/black"
             android:inputType="text"
-            android:maxLength="15"/>
+            android:maxLength="15"
+            android:textColor="@android:color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,20 +67,20 @@
         android:id="@+id/razaInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="120dp">
+        android:layout_marginTop="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/razaEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Raza"
-            android:textColor="@android:color/black"
             android:inputType="text"
-            android:maxLength="15"/>
+            android:maxLength="15"
+            android:textColor="@android:color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,20 +89,20 @@
         android:id="@+id/nameOwnerInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="200dp">
+        android:layout_marginTop="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameOwnerEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre del propietario"
-            android:textColor="@android:color/black"
             android:inputType="text"
-            android:maxLength="30"/>
+            android:maxLength="30"
+            android:textColor="@android:color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,20 +110,20 @@
         android:id="@+id/telephoneInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="280dp">
+        android:layout_marginTop="280dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/telephoneEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Teléfono"
-            android:textColor="@android:color/black"
             android:inputType="number"
-            android:maxLength="10"/>
+            android:maxLength="10"
+            android:textColor="@android:color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,19 +132,18 @@
         android:id="@+id/sintomasSpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="360dp">
+        android:layout_marginTop="360dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <Spinner
             android:id="@+id/sintomas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/opciones"
-            android:textColor="@android:color/black"
-            />
+            android:textColor="@android:color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -152,31 +152,43 @@
         android:id="@+id/btnGuardarCita"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="500dp"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
         <Button
             android:id="@+id/GuardarCita"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:textColorHighlight="@color/pink"
+            android:layout_marginTop="500dp"
+            android:background="@drawable/curved_button"
             android:drawableStart="@drawable/ic_save"
             android:drawablePadding="8dp"
+
             android:enabled="false"
             android:onClick="guardarCita"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:text="Guardar Cita"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="500dp"
-            android:background="@color/pink"/>
+            android:textColorHighlight="@color/pink"
+            android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+    <!--cambiar imagen-->
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="none"
+        android:src="@drawable/left_2"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.5"
+        tools:layout_editor_absoluteX="78dp" />
 
     <!-- Otros campos de entrada -->
 
