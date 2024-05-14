@@ -5,15 +5,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.appmovil.dogapp.R
 import com.appmovil.dogapp.databinding.FragmentAppointmentManagerBinding
+import com.appmovil.dogapp.view.adapter.AppointmentAdapter
+import com.appmovil.dogapp.viewmodel.AppointmentViewModel
 
 
 class AppointmentManagerFragment : Fragment() {
     private lateinit var binding: FragmentAppointmentManagerBinding
-   // private val appointmenViewModel: AppointmentViewModel by viewModels()
+    private val appointmenViewModel: AppointmentViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -21,12 +26,14 @@ class AppointmentManagerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAppointmentManagerBinding.inflate(inflater)
+        binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         controladores()
+        observadorViewModel()
 
     }
 
@@ -40,6 +47,31 @@ class AppointmentManagerFragment : Fragment() {
             }
         }
     }
+
+    private fun observadorViewModel(){
+        observerListAppointment()
+        observerProgress()
+    }
+    private fun observerListAppointment(){
+
+        appointmenViewModel.getListAppointment()
+        appointmenViewModel.listAppointment.observe(viewLifecycleOwner){ listAppointment ->
+            val recycler = binding.recyclerview
+            val layoutManager = LinearLayoutManager(context)
+            recycler.layoutManager = layoutManager
+            val adapter = AppointmentAdapter(listAppointment, findNavController())
+            recycler.adapter = adapter
+            adapter.notifyDataSetChanged()
+
+        }
+
+    }
+    private fun observerProgress(){
+        appointmenViewModel.progresState.observe(viewLifecycleOwner){status ->
+            binding.progress.isVisible = status
+        }
+    }
+
 
 
 }
