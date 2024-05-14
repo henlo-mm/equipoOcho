@@ -41,7 +41,7 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
 
             try {
                 _listAppointment.value = appointmentRepository.getListAppointment()
-
+                _progresState.value = false
             }  catch (e: Exception) {
                 _progresState.value = false
             }
