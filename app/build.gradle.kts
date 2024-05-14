@@ -51,7 +51,6 @@ dependencies {
 
     implementation("androidx.biometric:biometric:1.2.0-alpha05")
     implementation("com.airbnb.android:lottie:6.4.0")
-    implementation("androidx.databinding:library:3.2.0-alpha11")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -82,5 +81,12 @@ dependencies {
     implementation ("androidx.room:room-ktx:2.5.2")
     ksp("androidx.room:room-compiler:2.5.2")
     implementation ("com.getbase:floatingactionbutton:1.10.1")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    ksp("com.github.bumptech.glide:compiler:4.12.0")
 
 }
