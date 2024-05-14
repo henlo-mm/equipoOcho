@@ -52,7 +52,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="37dp"
-                android:background="none"
+                android:background="@drawable/curved_toolbar"
                 android:src="@drawable/left_2" />
 
 

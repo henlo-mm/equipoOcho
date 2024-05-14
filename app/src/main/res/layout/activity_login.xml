@@ -55,7 +55,8 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/finger"
-            tools:layout_editor_absoluteX="112dp" />
+            tools:layout_editor_absoluteX="112dp"
+            tools:ignore="MissingClass" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -2,9 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
-
+    android:layout_height="match_parent">
     <!-- Toolbar personalizada -->
 
     <!-- Campos de entrada -->
@@ -44,7 +42,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginLeft="35dp"
-            android:background="none"
+            android:background="@drawable/curved_toolbar"
             android:src="@drawable/left_2" />
 
 
@@ -82,13 +80,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/razaEditText"
+        <AutoCompleteTextView
+            android:id="@+id/razaAutoCompleteTextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150px"
             android:hint="Raza"
             android:inputType="text"
-            android:maxLength="15"
             android:textColor="@android:color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -151,8 +148,10 @@
             android:id="@+id/sintomas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:entries="@array/opciones"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -165,33 +164,29 @@
         android:layout_marginTop="500dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+
+       >
 
         <Button
             android:id="@+id/GuardarCita"
+            style="@style/MyButtonStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150px"
             android:layout_margin="16dp"
             android:layout_marginTop="500dp"
-            android:background="@drawable/curved_button"
-            android:backgroundTint="@color/pink"
             android:drawableStart="@drawable/ic_save"
             android:drawablePadding="8dp"
-
-            android:enabled="false"
+            android:enabled="true"
+            android:gravity="center"
             android:onClick="guardarCita"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
             android:text="Guardar Cita"
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:textColorHighlight="@color/pink"
             android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
-    <!--cambiar imagen-->
 
-
-    <!-- Otros campos de entrada -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
