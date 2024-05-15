@@ -47,5 +47,14 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="back">Back</string>
+    <string name="agregar_nuevo_elemento">Agregar nuevo elemento</string>
+    <string name="pet_image" />
+    <string name="hola_mundo">Hola Mundo</string>
+    <string name="sintomas" />
+    <string name="tiene_garrapatas">Tiene garrapatas</string>
+    <string name="pitbull" />
+    <string name="delete_button">delete_button</string>
+    <string name="edit_button" />
 
 </resources>
