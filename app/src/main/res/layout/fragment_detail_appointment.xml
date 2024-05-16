@@ -44,7 +44,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="90dp"
                     android:gravity="center"
-                    android:text="Cory"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -79,7 +79,7 @@
                     android:textColor="#F05861"
                     tools:ignore="MissingConstraints"
                     android:textStyle="bold"
-                    android:text="#1"/>
+                    android:text=""/>
 
                 <!-- Raza de la mascota -->
                 <TextView
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="pitbull"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold"
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/tiene_garrapatas"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toTopOf="@+id/view2"
@@ -118,9 +118,10 @@
                     android:layout_height="2dp"
                     android:background="#F05861"
                     android:elevation="10dp"
-                    tools:layout_editor_absoluteX="15dp"
-                    tools:layout_editor_absoluteY="173dp"
-                    tools:ignore="MissingConstraints" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="173dp" />
 
                 <!--Nombre del propietario -->
                 <TextView
@@ -128,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:text="Propietario: Walter"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toTopOf="@+id/ownerPhone"
@@ -145,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginBottom="8dp"
-                    android:text="Télefono: 3222137659"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -198,14 +199,15 @@
                     android:layout_height="45dp"
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="10dp"
+                    android:layout_marginBottom="0dp"
                     android:backgroundTint="#F05861"
                     android:contentDescription="@string/delete_button"
-                    android:src="@drawable/trash_can_png"
-                    app:useCompatPadding="true"
-                    app:fabCustomSize="45dp"
                     android:elevation="6dp"
+                    android:src="@drawable/trash_can_png"
+                    app:fabCustomSize="45dp"
                     app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium"
-                    app:tint="@color/white" />
+                    app:tint="@color/white"
+                    app:useCompatPadding="true" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/editButton"

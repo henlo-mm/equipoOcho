@@ -48,9 +48,9 @@
 
             <ImageButton
                 android:id="@+id/imageButton"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="37dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="37dp"
                 android:background="@drawable/curved_toolbar"
                 android:src="@drawable/left_2" />
 
@@ -182,15 +182,15 @@
                 android:id="@+id/GuardarCita"
                 style="@style/MyButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="150px"
+                android:layout_height="50dp"
                 android:layout_margin="16dp"
                 android:layout_marginTop="500dp"
-                android:drawableStart="@drawable/ic_save"
+                android:drawableStart="@drawable/save_icon"
                 android:drawablePadding="8dp"
                 android:enabled="true"
                 android:gravity="center"
                 android:onClick="guardarCita"
-                android:text="Guardar Cita"
+                android:text="@string/guardar_cita"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
