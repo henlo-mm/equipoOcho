@@ -19,3 +19,7 @@ data class DogResponse(
     val status: String,
     val message: List<String>
 )
+data class DogBreedsResponse(
+    val message: Map<String, List<String>>,
+    val status: String
+)

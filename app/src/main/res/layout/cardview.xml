@@ -6,77 +6,79 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp">
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/itemCardView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="-450dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="2dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/itemCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="-450dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <!-- Imagen circular de la mascota -->
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/petImageView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/circular"
-            app:srcCompat="@drawable/dog_app_logo"
-            />
-        <!-- Contenedor para el nombre de la mascota y la descripción del síntoma -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="16dp">
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <!-- Nombre de la mascota -->
-            <TextView
-                android:id="@+id/petNameTextView"
-                android:layout_width="wrap_content"
+            <!-- Imagen circular de la mascota -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/petImageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/circular"
+                app:srcCompat="@drawable/dog_app_logo"
+                />
+            <!-- Contenedor para el nombre de la mascota y la descripción del síntoma -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Nombre de la mascota"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
 
-            <!-- Descripción del síntoma -->
-            <TextView
-                android:id="@+id/symptomDescriptionTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Descripción del síntoma"
-                android:textSize="14sp" />
-        </LinearLayout>
+                <!-- Nombre de la mascota -->
+                <TextView
+                    android:id="@+id/petNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre de la mascota"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-        <!-- Turno de atención -->
-        <TextView
-            android:id="@+id/appointmentTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="#1"
-            android:textSize="12sp" />
-
+                <!-- Descripción del síntoma -->
+                <TextView
+                    android:id="@+id/symptomDescriptionTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descripción del síntoma"
+                    android:textSize="14sp" />
             </LinearLayout>
+
+            <!-- Turno de atención -->
+            <TextView
+                android:id="@+id/appointmentTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#1"
+                android:textColor="@color/pink"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

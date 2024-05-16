@@ -16,6 +16,9 @@ interface AppointmentDao {
     @Query("SELECT * FROM Appointment")
     suspend fun getListAppointment(): MutableList<Appointment>
 
+    @Query("SELECT * FROM Appointment WHERE id = :id")
+    suspend fun getListAppointmentById(id: Int): Appointment
+
     @Delete
     suspend fun deleteAppointment(appointment: Appointment)
 

@@ -1,6 +1,5 @@
 package com.appmovil.dogapp.view.adapter
 
-import android.renderscript.ScriptGroup.Binding
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

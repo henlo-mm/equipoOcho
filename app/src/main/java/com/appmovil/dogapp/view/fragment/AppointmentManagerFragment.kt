@@ -21,7 +21,6 @@ class AppointmentManagerFragment : Fragment() {
     private lateinit var binding: FragmentAppointmentManagerBinding
     private val appointmenViewModel: AppointmentViewModel by viewModels()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,7 +36,6 @@ class AppointmentManagerFragment : Fragment() {
         observadorViewModel()
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                // Lleva la tarea al fondo, simulando que la app se minimiza
                 activity?.moveTaskToBack(true)
             }
         }

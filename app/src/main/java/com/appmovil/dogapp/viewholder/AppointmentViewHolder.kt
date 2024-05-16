@@ -1,8 +1,10 @@
 package com.appmovil.dogapp.viewholder
 
+import android.os.Bundle
 import android.util.Log
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.appmovil.dogapp.R
 import com.appmovil.dogapp.databinding.CardviewBinding
 import com.appmovil.dogapp.model.Appointment
 import com.appmovil.dogapp.webservice.DogApiService
@@ -27,44 +29,39 @@ class AppointmentViewHolder (binding: CardviewBinding, navController: NavControl
             retrofit.create(DogApiService::class.java)
         }
 
-
         fun setAppointment(appointment: Appointment) {
             bindingAppointment.petNameTextView.text = appointment.dogName
             bindingAppointment.appointmentTextView.text = "# ${appointment.id}"
             bindingAppointment.symptomDescriptionTextView.text = appointment.symptom
             loadRandomDogImage(appointment.breed)
 
-
-           /* bindingAppointment.cvInventory.setOnClickListener {
+            bindingAppointment.itemCardView.setOnClickListener {
                 val bundle = Bundle()
-                bundle.putSerializable("clave", appointment)
-                navController.navigate(R.id.action_homeInventoryFragment_to_itemDetailsFragment, bundle
+                bundle.putSerializable("appointment", appointment)
+                navController.navigate(
+                    R.id.action_appointmentManagerFragment_to_detailAppointmentFragment, bundle
                 )
-            } */
+            }
 
         }
 
-    private fun loadRandomDogImage(breed: String) {
-        Log.d("raza", breed.toString())
-        dogApi.getRandomDogImage(breed).enqueue(object : Callback<DogResponse> {
-            override fun onResponse(call: Call<DogResponse>, response: Response<DogResponse>) {
-                if (response.isSuccessful) {
-                    response.body()?.message?.let { imageUrl ->
-                        Glide.with(itemView.context)
-                            .load(imageUrl[0])
-                            .into(bindingAppointment.petImageView)
+        private fun loadRandomDogImage(breed: String) {
+            dogApi.getRandomDogImage(breed).enqueue(object : Callback<DogResponse> {
+                override fun onResponse(call: Call<DogResponse>, response: Response<DogResponse>) {
+                    if (response.isSuccessful) {
+                        response.body()?.message?.let { imageUrl ->
+                            Glide.with(itemView.context)
+                                .load(imageUrl[0])
+                                .into(bindingAppointment.petImageView)
+                        }
                     }
-                } else {
-
-                    Log.d("test",  "falla")
                 }
-            }
 
-            override fun onFailure(call: Call<DogResponse>, t: Throwable) {
-                Log.e("API Failure", "Error loading image", t)
-            }
-        })
-    }
+                override fun onFailure(call: Call<DogResponse>, t: Throwable) {
+                    Log.e("API Failure", "Error loading image", t)
+                }
+            })
+        }
 
     }
 
