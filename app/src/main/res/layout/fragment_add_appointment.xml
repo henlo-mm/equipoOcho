@@ -176,39 +176,43 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="500dp">
+            android:layout_marginTop="500dp"
+            android:gravity="center">
+
 
             <Button
                 android:id="@+id/GuardarCita"
                 style="@style/MyButtonStyle"
-                android:layout_width="match_parent"
+                android:layout_width="205dp"
                 android:layout_height="50dp"
-                android:layout_margin="16dp"
-                android:layout_marginTop="500dp"
-                android:drawableStart="@drawable/save_icon"
-                android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/save_icon_1"
                 android:enabled="true"
                 android:gravity="center"
                 android:onClick="guardarCita"
+                android:paddingLeft="26dp"
+
                 android:text="@string/guardar_cita"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
+
 
         </com.google.android.material.textfield.TextInputLayout>
 
-<!--
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="none"
-            android:src="@drawable/left_2"
-            app:layout_constraintBottom_toTopOf="@+id/toolbar"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:layout_constraintVertical_bias="0.5"
-            tools:layout_editor_absoluteX="78dp" />
-            -->
+
+
+        <!--
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="none"
+                    android:src="@drawable/left_2"
+                    app:layout_constraintBottom_toTopOf="@+id/toolbar"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                    app:layout_constraintVertical_bias="0.5"
+                    tools:layout_editor_absoluteX="78dp" />
+                    -->
 
 
 
