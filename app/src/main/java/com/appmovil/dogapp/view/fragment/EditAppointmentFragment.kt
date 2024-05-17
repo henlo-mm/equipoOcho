@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -118,7 +119,7 @@ class EditAppointmentFragment : Fragment() {
 
         val appointment = Appointment(id = id, dogName = dogName, breed = breed, ownerName = nameOwner, phone = phone, symptom = symptom)
         appointmenViewModel.updateAppointment(appointment)
-
+        Toast.makeText(context,"¡Su cita se ha actualizado correctamente!", Toast.LENGTH_SHORT).show()
         findNavController().navigate(R.id.action_editAppointmentFragment_to_appointmentManagerFragment)
 
     }

@@ -51,6 +51,9 @@ class DetailAppointmentFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getAppointmentData()
         controladores()
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun controladores() {
