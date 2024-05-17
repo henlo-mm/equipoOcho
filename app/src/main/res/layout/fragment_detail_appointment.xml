@@ -170,6 +170,7 @@
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
                 android:elevation="8dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="@+id/petInfoLayout"
                 app:layout_constraintEnd_toEndOf="parent"
