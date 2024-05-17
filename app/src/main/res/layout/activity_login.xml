@@ -22,10 +22,9 @@
 
         <ImageView
             android:id="@+id/imageView_dog"
-            android:layout_width="300dp"
+            android:layout_width="220dp"
             android:layout_height="300dp"
-            android:layout_marginTop="40dp"
-            android:padding="0dp"
+            android:layout_marginTop="44dp"
             android:src="@drawable/login_dog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,12 +33,12 @@
             android:id="@+id/textView_title"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginTop="304dp"
-            android:gravity="center"
+            android:layout_marginTop="256dp"
             android:fontFamily="@font/poetsen"
+            android:gravity="center"
             android:text="DogApp"
             android:textColor="@color/white"
-            android:textSize="50dp"
+            android:textSize="60sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -47,8 +46,8 @@
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
             android:layout_width="match_parent"
-            android:layout_height="203dp"
-            android:layout_marginTop="32dp"
+            android:layout_height="170dp"
+
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_title"
