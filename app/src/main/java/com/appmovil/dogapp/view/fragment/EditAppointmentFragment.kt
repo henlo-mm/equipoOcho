@@ -1,5 +1,6 @@
 package com.appmovil.dogapp.view.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -44,14 +46,9 @@ class EditAppointmentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getAppointmentData()
-        controladores()
+        validateData()
         binding.imageButton.setOnClickListener {
             findNavController().popBackStack()
-        }
-    }
-    private fun controladores() {
-        binding.btnEdit.setOnClickListener {
-            updateAppointment()
         }
     }
 
@@ -106,6 +103,28 @@ class EditAppointmentFragment : Fragment() {
             }
         })
 
+    }
+
+    private fun validateData() {
+        val listEditText = listOf(binding.nameEditText, binding.nameOwnerEditText, binding.razaAutoCompleteTextView, binding.telephoneEditText)
+
+        fun isFormFilled(): Boolean {
+            return listEditText.all { it.text.isNotEmpty() }
+        }
+
+        listEditText.forEach { editText ->
+            editText.addTextChangedListener {
+                binding.btnEdit.isEnabled = isFormFilled()
+                binding.btnEdit.setTextColor(if (binding.btnEdit.isEnabled) Color.WHITE else Color.parseColor("#FF000000"))
+            }
+        }
+
+        binding.btnEdit.isEnabled = isFormFilled()
+        binding.btnEdit.setTextColor(if (binding.btnEdit.isEnabled) Color.WHITE else Color.parseColor("#FF000000"))
+
+        binding.btnEdit.setOnClickListener {
+            updateAppointment()
+        }
     }
 
     private fun updateAppointment(){

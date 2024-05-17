@@ -7,9 +7,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -92,11 +92,6 @@ class AddAppointmentFragment : Fragment() {
 
     private fun controladores() {
         validateData()
-
-        binding.GuardarCita.setOnClickListener {
-            Log.d("SAVE", "Trying save now")
-            saveAppointment()
-        }
     }
 
     private fun saveAppointment(){
@@ -116,16 +111,26 @@ class AddAppointmentFragment : Fragment() {
     private fun validateData() {
         val listEditText = listOf(binding.nameEditText, binding.nameOwnerEditText, binding.razaAutoCompleteTextView, binding.telephoneEditText)
 
-        binding.sintomas.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val isListFull = listEditText.all { it.text.isNotEmpty() } && binding.sintomas.selectedItem != null
-                binding.GuardarCita.isEnabled = isListFull
+        fun isFormFilled(): Boolean {
+            return listEditText.all { it.text.isNotEmpty() }
+        }
+
+        listEditText.forEach { editText ->
+            editText.addTextChangedListener {
+                binding.GuardarCita.isEnabled = isFormFilled()
                 binding.GuardarCita.setTextColor(if (binding.GuardarCita.isEnabled) Color.WHITE else Color.parseColor("#FF000000"))
-
             }
+        }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                binding.GuardarCita.isEnabled = false
+        binding.GuardarCita.isEnabled = isFormFilled()
+        binding.GuardarCita.setTextColor(if (binding.GuardarCita.isEnabled) Color.WHITE else Color.parseColor("#FF000000"))
+
+        binding.GuardarCita.setOnClickListener {
+            val selectedSymptom = binding.sintomas.selectedItem.toString()
+            if (selectedSymptom == "Seleccione un síntoma") {
+                Toast.makeText(context, "Por favor seleccione un síntoma.", Toast.LENGTH_SHORT).show()
+            } else {
+                saveAppointment()
             }
         }
     }
