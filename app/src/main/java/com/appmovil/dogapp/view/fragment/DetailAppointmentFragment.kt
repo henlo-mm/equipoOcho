@@ -99,8 +99,9 @@ class DetailAppointmentFragment : Fragment() {
                 if (response.isSuccessful) {
                     response.body()?.message?.let { imageUrl ->
                         Glide.with(requireContext())
-                            .load(imageUrl[0])
+                            .load(imageUrl)
                             .into(binding.petBreedImage)
+                            .clearOnDetach()
                     }
                 }
             }

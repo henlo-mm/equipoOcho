@@ -30,7 +30,6 @@ class AppointmentViewHolder (binding: CardviewBinding, navController: NavControl
         }
 
         fun setAppointment(appointment: Appointment) {
-            Log.d("ddd", appointment.toString())
 
             bindingAppointment.petNameTextView.text = appointment.dogName
             bindingAppointment.appointmentTextView.text = "# ${appointment.id}"
@@ -47,13 +46,15 @@ class AppointmentViewHolder (binding: CardviewBinding, navController: NavControl
         }
 
         private fun loadRandomDogImage(breed: String) {
+
             dogApi.getRandomDogImage(breed).enqueue(object : Callback<DogResponse> {
                 override fun onResponse(call: Call<DogResponse>, response: Response<DogResponse>) {
                     if (response.isSuccessful) {
                         response.body()?.message?.let { imageUrl ->
                             Glide.with(itemView.context)
-                                .load(imageUrl[0])
+                                .load(imageUrl)
                                 .into(bindingAppointment.petImageView)
+                                .clearOnDetach()
                         }
                     }
                 }

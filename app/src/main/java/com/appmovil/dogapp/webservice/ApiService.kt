@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface DogApiService {
-    @GET("breed/{breed}/images")
+    @GET("breed/{breed}/images/random")
     fun getRandomDogImage(@Path("breed") breed: String): Call<DogResponse>
 
 }
@@ -17,7 +17,7 @@ interface DogApiService1 {
 
 data class DogResponse(
     val status: String,
-    val message: List<String>
+    val message: String
 )
 data class DogBreedsResponse(
     val message: Map<String, List<String>>,

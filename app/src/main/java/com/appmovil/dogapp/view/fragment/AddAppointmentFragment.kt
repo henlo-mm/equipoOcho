@@ -18,6 +18,7 @@ import com.appmovil.dogapp.model.Appointment
 import com.appmovil.dogapp.model.DogBreedsResponse
 import com.appmovil.dogapp.viewmodel.AppointmentViewModel
 import com.appmovil.dogapp.webservice.DogApiService1
+import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -128,7 +129,9 @@ class AddAppointmentFragment : Fragment() {
         binding.GuardarCita.setOnClickListener {
             val selectedSymptom = binding.sintomas.selectedItem.toString()
             if (selectedSymptom == "Seleccione un síntoma") {
-                Toast.makeText(context, "Por favor seleccione un síntoma.", Toast.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, "Por favor seleccione un síntoma.", Snackbar.LENGTH_LONG)
+                    .show()
+
             } else {
                 saveAppointment()
             }

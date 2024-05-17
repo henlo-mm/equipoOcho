@@ -23,6 +23,7 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
 
     val listAppointment: LiveData<MutableList<Appointment>> get() = _listAppointment
 
+    private var hasLoadedData = false
     fun saveAppointment(appointment: Appointment) {
         viewModelScope.launch {
             _progresState.value = true
@@ -74,4 +75,5 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
             }
         }
     }
+
 }

@@ -42,6 +42,7 @@
                 app:shapeAppearanceOverlay="@style/circular"
                 app:srcCompat="@drawable/dog_app_logo"
                 />
+
             <!-- Contenedor para el nombre de la mascota y la descripción del síntoma -->
             <LinearLayout
                 android:layout_width="0dp"
