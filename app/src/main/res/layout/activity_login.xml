@@ -26,7 +26,7 @@
             android:layout_height="300dp"
             android:layout_marginTop="40dp"
             android:padding="0dp"
-            android:src="@drawable/dog_app_logo"
+            android:src="@drawable/login_dog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

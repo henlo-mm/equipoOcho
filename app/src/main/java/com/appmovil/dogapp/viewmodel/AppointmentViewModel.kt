@@ -1,6 +1,7 @@
 package com.appmovil.dogapp.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -68,6 +69,7 @@ class AppointmentViewModel(application: Application) : AndroidViewModel(applicat
                 appointmentRepository.updateAppointment(appointment)
                 _progresState.value = false
             } catch (e: Exception) {
+                Log.d("ex", e.toString())
                 _progresState.value = false
             }
         }

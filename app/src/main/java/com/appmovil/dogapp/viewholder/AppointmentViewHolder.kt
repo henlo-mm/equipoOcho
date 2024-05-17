@@ -30,11 +30,12 @@ class AppointmentViewHolder (binding: CardviewBinding, navController: NavControl
         }
 
         fun setAppointment(appointment: Appointment) {
+            Log.d("ddd", appointment.toString())
+
             bindingAppointment.petNameTextView.text = appointment.dogName
             bindingAppointment.appointmentTextView.text = "# ${appointment.id}"
-            bindingAppointment.symptomDescriptionTextView.text = appointment.symptom
+            bindingAppointment.symptomDescriptionTextView?.text = appointment.symptom
             loadRandomDogImage(appointment.breed)
-
             bindingAppointment.itemCardView.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putSerializable("appointment", appointment)

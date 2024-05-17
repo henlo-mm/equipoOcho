@@ -1,60 +1,125 @@
 package com.appmovil.dogapp.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.appmovil.dogapp.R
+import com.appmovil.dogapp.databinding.FragmentEditAppointmentBinding
+import com.appmovil.dogapp.model.Appointment
+import com.appmovil.dogapp.model.DogBreedsResponse
+import com.appmovil.dogapp.viewmodel.AppointmentViewModel
+import com.appmovil.dogapp.webservice.DogApiService1
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [EditAppointmentFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EditAppointmentFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentEditAppointmentBinding
+    private val appointmenViewModel: AppointmentViewModel by viewModels()
+    private lateinit var receivedAppointment: Appointment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_appointment, container, false)
+        binding = FragmentEditAppointmentBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EditAppointmentFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EditAppointmentFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getAppointmentData()
+        controladores()
+    }
+    private fun controladores() {
+        binding.btnEdit.setOnClickListener {
+            updateAppointment()
+        }
+    }
+
+    private fun getAppointmentData() {
+        val receivedBundle = arguments
+
+        receivedAppointment = receivedBundle?.getSerializable("appointmentData") as Appointment
+        binding.nameEditText.setText(receivedAppointment.dogName)
+        binding.razaAutoCompleteTextView.setText(receivedAppointment.breed)
+        binding.nameOwnerEditText.setText(receivedAppointment.ownerName)
+        binding.telephoneEditText.setText(receivedAppointment.phone.toString())
+
+        val razaAutoCompleteTextView =  binding.razaAutoCompleteTextView
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://dog.ceo/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service = retrofit.create(DogApiService1::class.java)
+
+        val call = service.getDogBreeds()
+
+        call.enqueue(object : Callback<DogBreedsResponse> {
+            override fun onResponse(call: Call<DogBreedsResponse>, response: Response<DogBreedsResponse>) {
+                if (response.isSuccessful) {
+                    val breedsResponse = response.body()
+                    breedsResponse?.let {
+                        val breedsMap = it.message
+                        val breedsList = mutableListOf<String>()
+                        breedsMap.forEach { (breed, subBreeds) ->
+                            if (subBreeds.isEmpty()) {
+                                breedsList.add(breed)
+                            } else {
+                                subBreeds.forEach { subBreed ->
+                                    breedsList.add("$subBreed $breed")
+                                }
+                            }
+                        }
+                        val adapter = ArrayAdapter<String>(
+                            razaAutoCompleteTextView.context,
+                            android.R.layout.simple_dropdown_item_1line,
+                            breedsList
+                        )
+                        razaAutoCompleteTextView.setAdapter(adapter)
+                    }
                 }
             }
+
+            override fun onFailure(call: Call<DogBreedsResponse>, t: Throwable) {
+                Log.d("response", t.toString())
+            }
+        })
+
     }
+
+    private fun updateAppointment(){
+
+        val id = receivedAppointment.id
+        val dogName = binding.nameEditText.text.toString()
+        val breed = binding.razaAutoCompleteTextView.text.toString()
+        val nameOwner = binding.nameOwnerEditText.text.toString()
+        val phone = binding.telephoneEditText.text.toString().toInt()
+        val symptom = receivedAppointment.symptom
+
+        val appointment = Appointment(id = id, dogName = dogName, breed = breed, ownerName = nameOwner, phone = phone, symptom = symptom)
+        appointmenViewModel.updateAppointment(appointment)
+
+        findNavController().navigate(R.id.action_editAppointmentFragment_to_appointmentManagerFragment)
+
+    }
+
+
+
 }

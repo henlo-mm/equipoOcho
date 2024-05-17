@@ -60,8 +60,13 @@ class DetailAppointmentFragment : Fragment() {
 
         binding.editButton.setOnClickListener {
             val bundle = Bundle()
-            bundle.putSerializable("appointmentData", receivedAppointment)
-            findNavController().navigate(R.id.action_detailAppointmentFragment_to_editAppointmentFragment, bundle)
+            if (receivedAppointment != null) {
+                bundle.putSerializable("appointmentData", receivedAppointment)
+                Log.d("EditButton", "Navigating to edit with data: $receivedAppointment")
+                findNavController().navigate(R.id.action_detailAppointmentFragment_to_editAppointmentFragment, bundle)
+            } else {
+                Log.e("EditButton", "Received appointment is null!")
+            }
         }
     }
 
@@ -75,6 +80,7 @@ class DetailAppointmentFragment : Fragment() {
         binding.ownerName.text = "${receivedAppointment.ownerName}"
         binding.ownerPhone.text = "${receivedAppointment.phone}"
 
+        Log.d("data", receivedAppointment.toString())
         loadRandomDogImage(receivedAppointment.breed)
 
     }

@@ -52,7 +52,7 @@
                 android:layout_marginTop="-10dp"
                 android:layout_marginBottom="-1dp"
                 android:contentDescription="Dogapp logo"
-                android:src="@drawable/dog_app_logo" />
+                android:src="@drawable/login_dog" />
 
             <TextView
                 android:id="@+id/logoTitleTextView"
