@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.appmovil.dogapp.databinding.CardviewBinding
 import com.appmovil.dogapp.model.Appointment
-import com.appmovil.dogapp.viewholder.AppointmentViewHolder
+import com.appmovil.dogapp.view.viewholder.AppointmentViewHolder
 import androidx.navigation.NavController
 
 class AppointmentAdapter(private val listAppointment:MutableList<Appointment>, private val navController: NavController):RecyclerView.Adapter<AppointmentViewHolder>() {

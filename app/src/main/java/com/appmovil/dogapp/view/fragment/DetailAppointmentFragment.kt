@@ -73,14 +73,13 @@ class DetailAppointmentFragment : Fragment() {
     private fun getAppointmentData() {
         val receivedBundle = arguments
         receivedAppointment = receivedBundle?.getSerializable("appointment") as Appointment
-        binding.numberAppointment.text = "${receivedAppointment.id}"
+        binding.numberAppointment.text = "#${receivedAppointment.id}"
         binding.titleTextDetailsName.text = "${receivedAppointment.dogName}"
-        binding.petBreedName.text = "$ ${receivedAppointment.breed}"
+        binding.petBreedName.text = "${receivedAppointment.breed}"
         binding.petSymptoms.text = "${receivedAppointment.symptom}"
-        binding.ownerName.text = "${receivedAppointment.ownerName}"
-        binding.ownerPhone.text = "${receivedAppointment.phone}"
+        binding.ownerName.text = "Propietario: ${receivedAppointment.ownerName}"
+        binding.ownerPhone.text = "Teléfono: ${receivedAppointment.phone}"
 
-        Log.d("data", receivedAppointment.toString())
         loadRandomDogImage(receivedAppointment.breed)
 
     }

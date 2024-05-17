@@ -1,4 +1,4 @@
-package com.appmovil.dogapp.viewholder
+package com.appmovil.dogapp.view.viewholder
 
 import android.os.Bundle
 import android.util.Log
