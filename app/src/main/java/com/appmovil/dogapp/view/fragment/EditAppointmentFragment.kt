@@ -44,6 +44,9 @@ class EditAppointmentFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getAppointmentData()
         controladores()
+        binding.imageButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
     private fun controladores() {
         binding.btnEdit.setOnClickListener {
@@ -110,7 +113,7 @@ class EditAppointmentFragment : Fragment() {
         val dogName = binding.nameEditText.text.toString()
         val breed = binding.razaAutoCompleteTextView.text.toString()
         val nameOwner = binding.nameOwnerEditText.text.toString()
-        val phone = binding.telephoneEditText.text.toString().toInt()
+        val phone = binding.telephoneEditText.text.toString().toLong()
         val symptom = receivedAppointment.symptom
 
         val appointment = Appointment(id = id, dogName = dogName, breed = breed, ownerName = nameOwner, phone = phone, symptom = symptom)

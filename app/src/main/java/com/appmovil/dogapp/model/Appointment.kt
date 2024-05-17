@@ -11,6 +11,6 @@ data class Appointment(
     val dogName:String,
     val breed:String,
     val ownerName:String,
-    val phone:Int,
+    val phone:Long,
     val symptom:String
 ): Serializable

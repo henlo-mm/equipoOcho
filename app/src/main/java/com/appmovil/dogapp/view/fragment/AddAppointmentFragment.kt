@@ -1,15 +1,19 @@
 package com.appmovil.dogapp.view.fragment
 
 import android.R
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import  com.appmovil.dogapp.databinding.FragmentAddAppointmentBinding
+import androidx.navigation.fragment.findNavController
+import com.appmovil.dogapp.databinding.FragmentAddAppointmentBinding
 import com.appmovil.dogapp.model.Appointment
 import com.appmovil.dogapp.model.DogBreedsResponse
 import com.appmovil.dogapp.viewmodel.AppointmentViewModel
@@ -25,7 +29,6 @@ class AddAppointmentFragment : Fragment() {
     private lateinit var binding: FragmentAddAppointmentBinding
     private val appointmentViewModel: AppointmentViewModel by viewModels()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +40,10 @@ class AddAppointmentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         controladores()
+        observerViewModel()
+        binding.imageButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
         val razaAutoCompleteTextView =  binding.razaAutoCompleteTextView
 
@@ -80,9 +87,12 @@ class AddAppointmentFragment : Fragment() {
             }
         })
 
+
     }
 
     private fun controladores() {
+        validateData()
+
         binding.GuardarCita.setOnClickListener {
             Log.d("SAVE", "Trying save now")
             saveAppointment()
@@ -93,13 +103,41 @@ class AddAppointmentFragment : Fragment() {
         val dogName = binding.nameEditText.text.toString()
         val breed = binding.razaAutoCompleteTextView.text.toString()
         val nameOwner = binding.nameOwnerEditText.text.toString()
-        val phone = binding.telephoneEditText.text.toString().toInt()
+        val phone = binding.telephoneEditText.text.toString().toLong()
         val symptom = binding.sintomas.selectedItem.toString()
 
         val appointment = Appointment(dogName = dogName, breed = breed, ownerName = nameOwner, phone = phone, symptom = symptom)
         appointmentViewModel.saveAppointment(appointment)
-        Log.d("test",appointment.toString())
-        //Toast.makeText(context,"Artículo guardado !!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context,"¡Su cita se ha guardado correctamente!", Toast.LENGTH_SHORT).show()
+        findNavController().popBackStack()
 
+    }
+
+    private fun validateData() {
+        val listEditText = listOf(binding.nameEditText, binding.nameOwnerEditText, binding.razaAutoCompleteTextView, binding.telephoneEditText)
+
+        binding.sintomas.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val isListFull = listEditText.all { it.text.isNotEmpty() } && binding.sintomas.selectedItem != null
+                binding.GuardarCita.isEnabled = isListFull
+                binding.GuardarCita.setTextColor(if (binding.GuardarCita.isEnabled) Color.WHITE else Color.parseColor("#FF000000"))
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                binding.GuardarCita.isEnabled = false
+            }
+        }
+    }
+    private fun observerViewModel(){
+        observerListAppintment()
+    }
+
+    private fun observerListAppintment() {
+
+        appointmentViewModel.getListAppointment()
+        appointmentViewModel.listAppointment.observe(viewLifecycleOwner){ lista ->
+
+        }
     }
 }

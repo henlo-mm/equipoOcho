@@ -182,8 +182,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="#F05861"
+                android:enabled="false"
                 android:textStyle="bold"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:text="Guardar Cita"
                 app:icon="@drawable/save_icon"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"/>
